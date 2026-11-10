@@ -28,19 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            txtProbki = new TextBox();
+            btnWyswietl = new Button();
             SuspendLayout();
+            // 
+            // txtProbki
+            // 
+            txtProbki.Location = new Point(194, 190);
+            txtProbki.Multiline = true;
+            txtProbki.Name = "txtProbki";
+            txtProbki.ScrollBars = ScrollBars.Vertical;
+            txtProbki.Size = new Size(326, 177);
+            txtProbki.TabIndex = 0;
+            // 
+            // btnWyswietl
+            // 
+            btnWyswietl.Location = new Point(194, 97);
+            btnWyswietl.Name = "btnWyswietl";
+            btnWyswietl.Size = new Size(171, 23);
+            btnWyswietl.TabIndex = 1;
+            btnWyswietl.Text = "Wyświetl próbki";
+            btnWyswietl.UseVisualStyleBackColor = true;
+            btnWyswietl.Click += btnWyswietl_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnWyswietl);
+            Controls.Add(txtProbki);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox txtProbki;
+        private Button btnWyswietl;
     }
 }
