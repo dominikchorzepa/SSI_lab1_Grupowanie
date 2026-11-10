@@ -7,6 +7,7 @@ namespace SSI___lab1___Grupowanie
     public class Kmeans
     {
         private List<Probka> srodkiGrup = new List<Probka>();
+        private List<List<Probka>> grupy = new List<List<Probka>>();
 
         public void LosujSrodki(List<Probka> probki, int k)
         {
@@ -29,6 +30,35 @@ namespace SSI___lab1___Grupowanie
                 Probka punkt = probki[indeks];
 
                 srodkiGrup.Add(new Probka(punkt.X1, punkt.X2));
+            }
+        }
+
+        public void PrzypiszProbkiDoGrup(List<Probka> probki)
+        {
+            grupy.Clear();
+
+            for (int i = 0; i < srodkiGrup.Count; i++)
+            {
+                grupy.Add(new List<Probka>());
+            }
+
+            foreach (Probka probka in probki)
+            {
+                double najmniejszaOdleglosc = double.MaxValue;
+                int najblizszaGrupa = 0;
+
+                for (int i = 0; i < srodkiGrup.Count; i++)
+                {
+                    double odleglosc = Metryki.Euklidesowa(probka, srodkiGrup[i]);
+
+                    if (odleglosc < najmniejszaOdleglosc)
+                    {
+                        najmniejszaOdleglosc = odleglosc;
+                        najblizszaGrupa = i;
+                    }
+                }
+
+                grupy[najblizszaGrupa].Add(probka);
             }
         }
 
