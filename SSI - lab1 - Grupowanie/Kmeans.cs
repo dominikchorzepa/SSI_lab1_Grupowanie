@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace SSI___lab1___Grupowanie
@@ -65,6 +66,11 @@ namespace SSI___lab1___Grupowanie
         public List<Probka> PobierzSrodki()
         {
             return srodkiGrup;
+        }
+
+        public List<List<Probka>> PobierzGrupy()
+        {
+            return grupy;
         }
     }
 }
