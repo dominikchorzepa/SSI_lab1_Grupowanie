@@ -63,6 +63,29 @@ namespace SSI___lab1___Grupowanie
             }
         }
 
+        public void AktualizujSrodki()
+        {
+            for (int i = 0; i < grupy.Count; i++)
+            {
+                if (grupy[i].Count == 0)
+                    continue;
+
+                double sumaX1 = 0;
+                double sumaX2 = 0;
+
+                foreach (Probka probka in grupy[i])
+                {
+                    sumaX1 += probka.X1;
+                    sumaX2 += probka.X2;
+                }
+
+                double sredniaX1 = sumaX1 / grupy[i].Count;
+                double sredniaX2 = sumaX2 / grupy[i].Count;
+
+                srodkiGrup[i] = new Probka(sredniaX1, sredniaX2);
+            }
+        }
+
         public List<Probka> PobierzSrodki()
         {
             return srodkiGrup;

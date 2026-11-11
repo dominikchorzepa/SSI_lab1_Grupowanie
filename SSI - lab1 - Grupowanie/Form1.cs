@@ -23,13 +23,15 @@ namespace SSI___lab1___Grupowanie
 
             kmeans.PrzypiszProbkiDoGrup(probki);
 
+            kmeans.AktualizujSrodki();
+
             txtProbki.Clear();
 
             List<List<Probka>> grupy = kmeans.PobierzGrupy();
 
-            for (int i = 0; i < grupy.Count; i++)
+            foreach (Probka p in kmeans.PobierzSrodki())
             {
-                txtProbki.AppendText($"Grupa {i + 1}: {grupy[i].Count} próbek\r\n");
+                txtProbki.AppendText($"X1: {p.X1}, X2: {p.X2}\r\n");
             }
         }
     }
