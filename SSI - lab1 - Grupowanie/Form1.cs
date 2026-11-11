@@ -19,20 +19,19 @@ namespace SSI___lab1___Grupowanie
         private void btnWyswietl_Click(object sender, EventArgs e)
         {
             Kmeans kmeans = new Kmeans();
-            kmeans.LosujSrodki(probki, 3);
 
-            kmeans.PrzypiszProbkiDoGrup(probki);
-
-            kmeans.AktualizujSrodki();
+            kmeans.Uruchom(probki, 3, 100);
 
             txtProbki.Clear();
 
             List<List<Probka>> grupy = kmeans.PobierzGrupy();
 
-            foreach (Probka p in kmeans.PobierzSrodki())
+            for (int i = 0; i < grupy.Count; i++)
             {
-                txtProbki.AppendText($"X1: {p.X1}, X2: {p.X2}\r\n");
+                txtProbki.AppendText($"Grupa {i + 1}: {grupy[i].Count} próbek\r\n");
             }
+
+
         }
     }
 }

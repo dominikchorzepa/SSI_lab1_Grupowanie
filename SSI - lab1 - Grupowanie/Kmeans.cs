@@ -86,6 +86,19 @@ namespace SSI___lab1___Grupowanie
             }
         }
 
+        public void Uruchom(List<Probka> probki, int k, int iteracje)
+        {
+            LosujSrodki(probki, k);
+
+            for (int i = 0; i < iteracje; i++)
+            {
+                PrzypiszProbkiDoGrup(probki);
+                AktualizujSrodki();
+            }
+
+            PrzypiszProbkiDoGrup(probki);
+        }
+
         public List<Probka> PobierzSrodki()
         {
             return srodkiGrup;
