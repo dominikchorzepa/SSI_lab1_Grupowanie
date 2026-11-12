@@ -27,18 +27,34 @@ namespace SSI___lab1___Grupowanie
         {
             Kmeans kmeans = new Kmeans();
 
-            kmeans.Uruchom(probki, 3, 100);
+            int k = (int)numK.Value;
+            int iteracje = (int)numIteracje.Value;
+
+            TypMetryki metryka = PobierzWybranaMetryke();
+
+            kmeans.Uruchom(probki, k, iteracje, metryka);
 
             txtProbki.Clear();
 
-            List<List<Probka>> grupy = kmeans.PobierzGrupy();
 
-            for (int i = 0; i < grupy.Count; i++)
+        }
+
+
+        private TypMetryki PobierzWybranaMetryke()
+        {
+            switch (comboBoxMetryka.SelectedIndex)
             {
-                txtProbki.AppendText($"Grupa {i + 1}: {grupy[i].Count} próbek\r\n");
+                case 0:
+                    return TypMetryki.Euklidesowa;
+                case 1:
+                    return TypMetryki.Manhattan;
+                case 2:
+                    return TypMetryki.Czebyszew;
+                case 3:
+                    return TypMetryki.Minkowskiego;
+                default:
+                    throw new ArgumentException("Wybierz metrykę.");
             }
-
-
         }
     }
 }

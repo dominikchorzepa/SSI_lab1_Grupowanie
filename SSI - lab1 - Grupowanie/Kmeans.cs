@@ -34,7 +34,7 @@ namespace SSI___lab1___Grupowanie
             }
         }
 
-        public void PrzypiszProbkiDoGrup(List<Probka> probki)
+        public void PrzypiszProbkiDoGrup(List<Probka> probki, TypMetryki metryka)
         {
             grupy.Clear();
 
@@ -50,7 +50,7 @@ namespace SSI___lab1___Grupowanie
 
                 for (int i = 0; i < srodkiGrup.Count; i++)
                 {
-                    double odleglosc = Metryki.Euklidesowa(probka, srodkiGrup[i]);
+                    double odleglosc = Metryki.ObliczOdleglosc(probka, srodkiGrup[i], metryka);
 
                     if (odleglosc < najmniejszaOdleglosc)
                     {
@@ -86,17 +86,17 @@ namespace SSI___lab1___Grupowanie
             }
         }
 
-        public void Uruchom(List<Probka> probki, int k, int iteracje)
+        public void Uruchom(List<Probka> probki, int k, int iteracje, TypMetryki metryka)
         {
             LosujSrodki(probki, k);
 
             for (int i = 0; i < iteracje; i++)
             {
-                PrzypiszProbkiDoGrup(probki);
+                PrzypiszProbkiDoGrup(probki, metryka);
                 AktualizujSrodki();
             }
 
-            PrzypiszProbkiDoGrup(probki);
+            PrzypiszProbkiDoGrup(probki, metryka);
         }
 
         public List<Probka> PobierzSrodki()
